@@ -13,6 +13,11 @@ let Projet = require('./models/projet');
 app.use(bodyParser.urlencoded({ extended: false }))
 // parse application/json
 app.use(bodyParser.json())  
+  
+app.use((rq,res,next)=>{
+    
+    next
+})
 /* app.use(cors(corsOptions)); */
 
 app.get('/allprojects',(req,res)=>{
@@ -23,7 +28,7 @@ app.get('/allprojects',(req,res)=>{
    })
 })
 
- app.post('/validation/:numproj',(req,res)=>{
+ app.put('/validation/:numproj',(req,res)=>{
     console.log(req.params.numproj)
       Projet.validation(req.params.numproj,function(){
           res.status(200)
